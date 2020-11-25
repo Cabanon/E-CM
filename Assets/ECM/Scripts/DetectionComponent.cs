@@ -4,54 +4,35 @@ using UnityEngine;
 
 public class DetectionComponent : MonoBehaviour {
 
-    public GameObject[] neighbours;
-    public float detectionRadius = 5f;
-    public int updatePeriod = 30; // Only execute computation intensive function every x frame
-    private int frameCount;
+    public List<GameObject> visible;
+    private float viewDistance = 5f;
+    private float fieldOfView = 120;
     private LayerMask mask;
-    private Collider[] neighboursCache; // Will store result of OverlapSphereNonAlloc function
-    private int neighboursMaxNumber = 10;
-    public int lastRealNeighbour = 0; // Index of last real neighbour;
+
+    public float detectionRadius = 5f;
 
     void Start () {
-        neighbours = new GameObject[neighboursMaxNumber]; // Maximum of 10 neighbours
-        neighboursCache = new Collider[neighboursMaxNumber];
-        frameCount = Random.Range(0, updatePeriod - 1); // Random offset in frame count so that all character update in different frames
         mask = LayerMask.GetMask("Detectable");
-
     }
 	
-	// Update is called once per frame
-	void Update () {
-        frameCount++;
-        if (frameCount >= updatePeriod)
-        {
-            frameCount = 0;
-            DetectNeighbours();
-        }
-	}
-
-    private void DetectNeighbours()
-    {
-        int collisionNumber = Physics.OverlapSphereNonAlloc(transform.position, detectionRadius, neighboursCache, mask);
-        lastRealNeighbour = 0;
-        for (int i=0; i< collisionNumber; i++)
-        {
-            Collider col = neighboursCache[i];
-            if (col != null && ! col.gameObject.Equals(this.gameObject))
-            {
-                if (Vector3.Distance(col.transform.position, transform.position) < detectionRadius)
-                {
-                    neighbours[lastRealNeighbour] = col.gameObject;
-                    lastRealNeighbour++;
-                }
+	void FixedUpdate () {
+        visible = new List<GameObject>(); 
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, viewDistance, mask);
+        foreach (var hitCollider in hitColliders)
+        {   
+            GameObject neighbour = hitCollider.gameObject;
+            float angle = Vector3.Angle(transform.forward, neighbour.transform.position - transform.position);
+            if (neighbour.transform != transform & angle < fieldOfView / 2) {
+                visible.Add(neighbour);
             }
         }
-    }
+	}
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        //Gizmos.DrawWireSphere(transform.position, viewDistance);
+        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -60, 0) * transform.forward * 5);
+        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 60, 0) * transform.forward * 5);
     }
 }
