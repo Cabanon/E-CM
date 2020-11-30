@@ -44,8 +44,6 @@ public class Character : MonoBehaviour {
         TimeManager.instance.On5MinutesUpdate += UpdateNeeds;
         UpdateNavMeshAgentStats();
         diary = new Queue<DiaryEntry>();
-        sqrDetectionRadius = Mathf.Pow(GetComponent<DetectionComponent>().detectionRadius, 2);
-
     }
 
     public void RandomizeCharacter(string name, CharacterJob job = CharacterJob.Student)
