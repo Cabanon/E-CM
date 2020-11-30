@@ -8,6 +8,7 @@ public class Sound : MonoBehaviour
     public float soundForce; //number of wall that can be pass by sound
     public float lifeTime;
 
+    public bool isSoundEffect = false;
     public GameObject soundEffect = null;
     public GameObject soundWave;
 
@@ -15,7 +16,7 @@ public class Sound : MonoBehaviour
     {
        if (soundEffect == null)
         {
-            soundWave = Instantiate(soundWave, transform.gameObject.transform.parent.position + soundWave.transform.position, soundWave.transform.rotation, transform.gameObject.transform.parent);
+            soundEffect = Instantiate(soundWave, transform.gameObject.transform.parent.position + soundWave.transform.position, soundWave.transform.rotation, transform.gameObject.transform.parent);
         }
     }
 

@@ -36,7 +36,6 @@ public class SoundSystem : MonoBehaviour
         {
             if (isSelected == false)
             {
-                Debug.Log("Ta mère en slip de guerre");
                 foreach (GameObject sound in sounds)
                 {
                     sound.transform.gameObject.GetComponent<Sound>().DestroySoundEffect();
@@ -58,8 +57,12 @@ public class SoundSystem : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == mask)
+        if (other.gameObject.layer == 10) //Put 10 because mask.value() didn't work and was equal to 1024 but why ???
         {
+            if (isSelected)
+            {
+                other.transform.gameObject.GetComponent<Sound>().DestroySoundEffect();
+            }
             sounds.Remove(other.gameObject);
         }
     }
