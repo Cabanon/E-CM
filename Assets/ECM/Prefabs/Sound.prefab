@@ -47,8 +47,9 @@ MonoBehaviour:
   soundIntensity: 0
   soundForce: 0
   lifeTime: 0
-  updatePeriod: 30
   soundEffect: {fileID: 0}
+  soundWave: {fileID: 535423726709711802, guid: 28f8f82b4f96f924c9de50dcea9f838a,
+    type: 3}
 --- !u!135 &7649293945815063893
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -61,4 +62,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -250, z: 0}

@@ -7,40 +7,23 @@ public class Sound : MonoBehaviour
     public float soundIntensity; //distance detection of the sound
     public float soundForce; //number of wall that can be pass by sound
     public float lifeTime;
-    public int updatePeriod = 30; // Only execute computation intensive function every x frame
-    private int frameCount;
+
     public GameObject soundEffect = null;
+    public GameObject soundWave;
 
-    // Start is called before the first frame update
-    void Start()
+    public void AfficheSoundEffect ()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        frameCount++;
-        if (frameCount >= updatePeriod)
+       if (soundEffect == null)
         {
-            frameCount = 0;
-           // SearchTarget();
+            soundWave = Instantiate(soundWave, transform.gameObject.transform.parent.position + soundWave.transform.position, soundWave.transform.rotation, transform.gameObject.transform.parent);
         }
     }
 
-    void SearchTarget()
+    public void DestroySoundEffect()
     {
-        var collidersInRange = Physics.OverlapSphere(transform.position, soundIntensity);
-
-        foreach (var currentCollider in collidersInRange)
-        {
-                if (currentCollider.tag == "Player")
-                {
-
-                    
-                }
-            }
-
+        if (soundEffect != null) {
+            Destroy(soundEffect);
+            soundEffect = null;
+        }
     }
-
 }
