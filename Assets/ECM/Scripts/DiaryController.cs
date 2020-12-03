@@ -10,10 +10,15 @@ public class DiaryController : MonoBehaviour {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI statusText;
 
-    public void AddEntries(Queue<DiaryEntry> entries)
+    private GameObject owner;
+
+    public void AddEntries(Queue<DiaryEntry> entries, GameObject owner)
     {
+        if (!GameObject.ReferenceEquals(this.owner, owner))
+            return;
+
         foreach (DiaryEntry entry in entries)
-            AddEntry(entry);
+            AddEntry(entry, owner);
     }
 
     public void UpdateNameAndStatus(string name, string status)
@@ -26,11 +31,27 @@ public class DiaryController : MonoBehaviour {
 		
 	}
 
-    public void AddEntry(DiaryEntry entry)
+    public void AddEntry(DiaryEntry entry, GameObject owner)
     {
+        if (!GameObject.ReferenceEquals(this.owner, owner))
+            return;
+
         GameObject item = Instantiate(listItemPrefab, content.transform) as GameObject;
         item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = entry.time;
         item.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.description;
+    }
+
+    public void ResetEntries()
+    {
+        for(int i = 0; i < content.transform.childCount; i++)
+        {
+            Destroy(content.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public void SetOwner(GameObject owner)
+    {
+        this.owner = owner;
     }
 
 }

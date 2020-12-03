@@ -191,8 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   isHighlighted: 0
-  CharacterUi: {fileID: 223765114355082030, guid: bdb39624ed36f9147b48df6e525e0dda,
-    type: 3}
+  CharacterUi: {fileID: 0}
   spawnedUi: {fileID: 0}
   realName: Thomas
   job: 0
@@ -220,10 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984f4c4c5f3bb1748a089b87ee79e22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbours: []
+  visible: []
   detectionRadius: 5
-  updatePeriod: 100
-  lastRealNeighbour: 0
 --- !u!114 &114957379782701178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,11 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a620840c50da6418961783fe780cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updatePeriod: 30
-  soundWave: {fileID: 535423726709711802, guid: 28f8f82b4f96f924c9de50dcea9f838a,
-    type: 3}
   sounds: []
-  range: 1
 --- !u!54 &4686646139725995413
 Rigidbody:
   m_ObjectHideFlags: 0
