@@ -15,7 +15,6 @@ public class SoundSystem : MonoBehaviour
     void Start()
     {
         mask = LayerMask.GetMask("Sound");
-        //Debug.Log(transform.gameObject.GetComponentInParent<Character>().isSelected);
     }
 
     // Update is called once per frame
@@ -23,16 +22,16 @@ public class SoundSystem : MonoBehaviour
     {
         isSelected = transform.gameObject.GetComponentInParent<Character>().isSelected;
 
-        if (isSelected)
+        if (isSelected) 
         {
-            foreach(GameObject sound in sounds)
+            foreach(GameObject sound in sounds) //display the soundWave sound effect for the selected character
             {
                 sound.transform.gameObject.GetComponent<Sound>().AfficheSoundEffect();
             }
             wasSelected = true;
         }
 
-        if (wasSelected)
+        if (wasSelected) //remove the soundWave sound effect when the character is unselected
         {
             if (isSelected == false)
             {
@@ -47,7 +46,7 @@ public class SoundSystem : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // add the sound in range in the sounds list
     {
         if (other.gameObject.layer == 10) //Put 10 because mask.value() didn't work and was equal to 1024 but why ???
         {
@@ -55,7 +54,7 @@ public class SoundSystem : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) // remove the sound not in range in the sounds list
     {
         if (other.gameObject.layer == 10) //Put 10 because mask.value() didn't work and was equal to 1024 but why ???
         {
