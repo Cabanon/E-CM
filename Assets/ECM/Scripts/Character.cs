@@ -123,11 +123,8 @@ public class Character : MonoBehaviour {
         if (spawnedUi != null)
             return;
 
-        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position) - Vector3.up * 100;
         spawnedUi = Instantiate(CharacterUi).GetComponent<DiaryController>();
-        spawnedUi.transform.GetChild(0).position = pos;
-        spawnedUi.AddEntries(diary);
-        spawnedUi.UpdateNameAndStatus(realName, job.ToString());
+        spawnedUi.LinkCharacter(gameObject);
     
     }
 

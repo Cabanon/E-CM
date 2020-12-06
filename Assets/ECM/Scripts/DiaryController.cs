@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class DiaryController : MonoBehaviour {
 
-    public GameObject content;
-    public GameObject listItemPrefab;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI statusText;
+    private GameObject character;
+    public Text name;
 
     public void AddEntries(Queue<DiaryEntry> entries)
     {
@@ -16,10 +14,10 @@ public class DiaryController : MonoBehaviour {
             AddEntry(entry);
     }
 
-    public void UpdateNameAndStatus(string name, string status)
-    {
-        this.nameText.text = name;
-        this.statusText.text = status;
+    public void LinkCharacter(GameObject charac)
+    {   
+        character = charac;
+        name.text = charac.name;
     }
 
 	void Update () {
@@ -28,9 +26,9 @@ public class DiaryController : MonoBehaviour {
 
     public void AddEntry(DiaryEntry entry)
     {
-        GameObject item = Instantiate(listItemPrefab, content.transform) as GameObject;
-        item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = entry.time;
-        item.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.description;
+        //GameObject item = Instantiate(listItemPrefab, content.transform) as GameObject;
+        //item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = entry.time;
+        //item.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.description;
     }
 
 }
