@@ -44,6 +44,7 @@ public class Character : MonoBehaviour {
         TimeManager.instance.On5MinutesUpdate += UpdateNeeds;
         UpdateNavMeshAgentStats();
         diary = new Queue<DiaryEntry>();
+        CharacterUi = GameObject.Find("CharacterInfoCanvas").GetComponent<Canvas>();
     }
 
     public void RandomizeCharacter(string name, CharacterJob job = CharacterJob.Student)
@@ -120,12 +121,8 @@ public class Character : MonoBehaviour {
 
     public void SpawnCharacterUi()
     {
-        if (spawnedUi != null)
-            return;
-
         spawnedUi = Instantiate(CharacterUi).GetComponent<DiaryController>();
         spawnedUi.LinkCharacter(gameObject);
-    
     }
 
     public void AddDiaryEntry(string description)
@@ -133,7 +130,7 @@ public class Character : MonoBehaviour {
         DiaryEntry entry = new DiaryEntry(TimeManager.instance.timeOfDay, description);
         diary.Enqueue(entry);
         if (spawnedUi != null)
-            spawnedUi.AddEntry(entry);
+            spawnedUi.AddEntry(entry, gameObject);
     }
 
     public void Select()
