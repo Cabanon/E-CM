@@ -7,6 +7,7 @@ public class DiaryController : MonoBehaviour {
 
     private GameObject character;
     public Text name;
+    public RectTransform content;
 
     private GameObject owner;
 
@@ -26,7 +27,14 @@ public class DiaryController : MonoBehaviour {
     }
 
 	void Update () {
-		
+        List<GameObject> visible = character.GetComponent<DetectionComponent>().getVisibleNeighbours();
+        foreach (Transform child in content)
+        {
+            Destroy(child.gameObject);
+        }
+		foreach (var charac in visible) {   
+            AddName(charac.name);
+        }
 	}
 
     public void AddEntry(DiaryEntry entry, GameObject owner)
@@ -36,12 +44,12 @@ public class DiaryController : MonoBehaviour {
         //item.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.description;
     }
 
-    public void ResetEntries()
+    void AddName(string name)
     {
-        for(int i = 0; i < content.transform.childCount; i++)
-        {
-            Destroy(content.transform.GetChild(i).gameObject);
-        }
+        GameObject item = new GameObject();
+        item.AddComponent<Text>();
+        item.GetComponent<Text>().text = name;
+        item.transform.SetParent(content);
     }
 
     public void SetOwner(GameObject owner)
