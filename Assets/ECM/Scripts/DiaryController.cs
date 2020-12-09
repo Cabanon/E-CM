@@ -54,8 +54,7 @@ public class DiaryController : MonoBehaviour {
 
     void AddName(string name)
     {
-        GameObject item = new GameObject();
-        item.AddComponent<Text>();
+        GameObject item = Instantiate(listItem);
         item.GetComponent<Text>().text = name;
         item.transform.SetParent(content);
     }
