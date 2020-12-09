@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class DiaryController : MonoBehaviour {
 
     private GameObject character;
-    public Text name;
+    public Text title;
     public RectTransform content;
+    public GameObject listItem;
 
     private GameObject owner;
 
@@ -23,17 +24,24 @@ public class DiaryController : MonoBehaviour {
     public void LinkCharacter(GameObject charac)
     {   
         character = charac;
-        name.text = charac.name;
+        title.text = charac.name;
+    }
+
+    public void Unlink() {
+        character = null;
+        title.text = "No character selected";
     }
 
 	void Update () {
-        List<GameObject> visible = character.GetComponent<DetectionComponent>().getVisibleNeighbours();
-        foreach (Transform child in content)
-        {
-            Destroy(child.gameObject);
-        }
-		foreach (var charac in visible) {   
-            AddName(charac.name);
+        if (character) {
+            List<GameObject> visible = character.GetComponent<DetectionComponent>().getVisibleNeighbours();
+            foreach (Transform child in content)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (var charac in visible) {
+                AddName(charac.name);
+            }
         }
 	}
 
