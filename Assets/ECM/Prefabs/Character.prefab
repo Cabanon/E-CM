@@ -191,8 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   isHighlighted: 0
-  CharacterUi: {fileID: 223765114355082030, guid: bdb39624ed36f9147b48df6e525e0dda,
-    type: 3}
+  CharacterUi: {fileID: 0}
   spawnedUi: {fileID: 0}
   realName: Thomas
   job: 0

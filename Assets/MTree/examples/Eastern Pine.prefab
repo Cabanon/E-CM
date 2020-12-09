@@ -1,22 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1832593623313492}
-  m_IsPrefabParent: 1
 --- !u!1 &1832593623313492
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4741522296956802}
   - component: {fileID: 33548391126766620}
@@ -31,9 +21,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4741522296956802
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832593623313492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.91, y: 0, z: 0}
@@ -42,18 +33,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &33548391126766620
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832593623313492}
+  m_Mesh: {fileID: 0}
 --- !u!23 &23906513336661716
 MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832593623313492}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 105a20790cfaee246a6230c8fd1e8643, type: 2}
   - {fileID: 2100000, guid: e45a4dbf1c0e99440a82776f42fd21c6, type: 2}
@@ -64,9 +68,11 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -75,18 +81,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33548391126766620
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1832593623313492}
-  m_Mesh: {fileID: 0}
 --- !u!114 &114760678395137040
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832593623313492}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -97,8 +97,7 @@ MonoBehaviour:
   - nodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -130,10 +129,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -165,8 +164,7 @@ MonoBehaviour:
     selectedNodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -198,10 +196,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -233,8 +231,7 @@ MonoBehaviour:
     deleteButtonStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 5678992438467266410, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Hover:
@@ -307,31 +304,37 @@ MonoBehaviour:
       x: 0
       y: 0
       width: 200
-      height: 40
+      height: 37
     deleteRect:
       serializedVersion: 2
-      x: 178
-      y: 15
-      width: 10
-      height: 10
+      x: 170
+      y: 9
+      width: 18
+      height: 18
     parentId: -1
     name: Trunk
     TradiusMultiplier: 0.2
     Tradius:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: -1
         outSlope: -1
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -343,24 +346,33 @@ MonoBehaviour:
     TrootShape:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0.113247514
         value: 1.0897063
         inSlope: -4.482799
         outSlope: -4.482799
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.188624
         value: 0.8959209
         inSlope: -1.9615889
         outSlope: -1.9615889
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -376,18 +388,24 @@ MonoBehaviour:
     GlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -398,36 +416,48 @@ MonoBehaviour:
     Gradius:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     GsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -445,18 +475,24 @@ MonoBehaviour:
     BlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -468,36 +504,48 @@ MonoBehaviour:
     Bshape:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -1
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: -1
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     BsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -524,8 +572,7 @@ MonoBehaviour:
   - nodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -557,10 +604,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -592,8 +639,7 @@ MonoBehaviour:
     selectedNodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -625,10 +671,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -660,8 +706,7 @@ MonoBehaviour:
     deleteButtonStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 5678992438467266410, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Hover:
@@ -734,13 +779,13 @@ MonoBehaviour:
       x: 30
       y: 34
       width: 200
-      height: 40
+      height: 37
     deleteRect:
       serializedVersion: 2
-      x: 208
-      y: 49
-      width: 10
-      height: 10
+      x: 200
+      y: 43
+      width: 18
+      height: 18
     parentId: 0
     name: Branch
     TradiusMultiplier: 0.3
@@ -773,18 +818,24 @@ MonoBehaviour:
     GlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -795,36 +846,48 @@ MonoBehaviour:
     Gradius:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     GsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -842,18 +905,24 @@ MonoBehaviour:
     BlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.98394775
         value: 0.98234254
         inSlope: -0.05334694
         outSlope: -0.05334694
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -865,36 +934,48 @@ MonoBehaviour:
     Bshape:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -1
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: -1
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     BsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -921,8 +1002,7 @@ MonoBehaviour:
   - nodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -954,10 +1034,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -989,8 +1069,7 @@ MonoBehaviour:
     selectedNodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -1022,10 +1101,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -1057,8 +1136,7 @@ MonoBehaviour:
     deleteButtonStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 5678992438467266410, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Hover:
@@ -1131,13 +1209,13 @@ MonoBehaviour:
       x: 60
       y: 68
       width: 200
-      height: 40
+      height: 37
     deleteRect:
       serializedVersion: 2
-      x: 238
-      y: 83
-      width: 10
-      height: 10
+      x: 230
+      y: 77
+      width: 18
+      height: 18
     parentId: 1
     name: Branch
     TradiusMultiplier: 0.3
@@ -1170,18 +1248,24 @@ MonoBehaviour:
     GlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1192,36 +1276,48 @@ MonoBehaviour:
     Gradius:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     GsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1239,18 +1335,24 @@ MonoBehaviour:
     BlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1262,36 +1364,48 @@ MonoBehaviour:
     Bshape:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -1
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: -1
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     BsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1318,8 +1432,7 @@ MonoBehaviour:
   - nodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -1351,10 +1464,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -1386,8 +1499,7 @@ MonoBehaviour:
     selectedNodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -1419,10 +1531,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -1454,8 +1566,7 @@ MonoBehaviour:
     deleteButtonStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 5678992438467266410, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Hover:
@@ -1528,13 +1639,13 @@ MonoBehaviour:
       x: 90
       y: 102
       width: 200
-      height: 40
+      height: 37
     deleteRect:
       serializedVersion: 2
-      x: 268
-      y: 117
-      width: 10
-      height: 10
+      x: 260
+      y: 111
+      width: 18
+      height: 18
     parentId: 4
     name: Leaf
     TradiusMultiplier: 0.3
@@ -1567,18 +1678,24 @@ MonoBehaviour:
     GlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1589,36 +1706,48 @@ MonoBehaviour:
     Gradius:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     GsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1636,18 +1765,24 @@ MonoBehaviour:
     BlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1659,36 +1794,48 @@ MonoBehaviour:
     Bshape:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -1
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: -1
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     BsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1715,8 +1862,7 @@ MonoBehaviour:
   - nodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -1748,10 +1894,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -1783,8 +1929,7 @@ MonoBehaviour:
     selectedNodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -1816,10 +1961,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -1851,8 +1996,7 @@ MonoBehaviour:
     deleteButtonStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 5678992438467266410, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Hover:
@@ -1925,13 +2069,13 @@ MonoBehaviour:
       x: 30
       y: 136
       width: 200
-      height: 40
+      height: 37
     deleteRect:
       serializedVersion: 2
-      x: 208
-      y: 151
-      width: 10
-      height: 10
+      x: 200
+      y: 145
+      width: 18
+      height: 18
     parentId: 0
     name: Split
     TradiusMultiplier: 0.3
@@ -1964,18 +2108,24 @@ MonoBehaviour:
     GlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1986,36 +2136,48 @@ MonoBehaviour:
     Gradius:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     GsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2033,18 +2195,24 @@ MonoBehaviour:
     BlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2056,36 +2224,48 @@ MonoBehaviour:
     Bshape:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -1
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: -1
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     BsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2112,8 +2292,7 @@ MonoBehaviour:
   - nodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: -3453378117783705200, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -2145,10 +2324,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -2180,8 +2359,7 @@ MonoBehaviour:
     selectedNodeStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 7126082630596479001, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 1, g: 1, b: 1, a: 1}
       m_Hover:
@@ -2213,10 +2391,10 @@ MonoBehaviour:
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Border:
-        m_Left: 12
-        m_Right: 12
-        m_Top: 12
-        m_Bottom: 12
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
       m_Margin:
         m_Left: 0
         m_Right: 0
@@ -2248,8 +2426,7 @@ MonoBehaviour:
     deleteButtonStyle:
       m_Name: 
       m_Normal:
-        m_Background: {fileID: 5678992438467266410, guid: 0000000000000000d000000000000000,
-          type: 0}
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
         m_ScaledBackgrounds: []
         m_TextColor: {r: 0, g: 0, b: 0, a: 1}
       m_Hover:
@@ -2322,13 +2499,13 @@ MonoBehaviour:
       x: 30
       y: 170
       width: 200
-      height: 40
+      height: 37
     deleteRect:
       serializedVersion: 2
-      x: 208
-      y: 185
-      width: 10
-      height: 10
+      x: 200
+      y: 179
+      width: 18
+      height: 18
     parentId: 0
     name: Grow
     TradiusMultiplier: 0.3
@@ -2361,18 +2538,24 @@ MonoBehaviour:
     GlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2383,36 +2566,48 @@ MonoBehaviour:
     Gradius:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.9723511
         value: 0.59384155
         inSlope: -0.5
         outSlope: -0.5
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     GsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2430,18 +2625,24 @@ MonoBehaviour:
     BlengthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -0.19999999
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0.8
         inSlope: -0.19999999
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2453,36 +2654,48 @@ MonoBehaviour:
     Bshape:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
         outSlope: -1
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
         inSlope: -1
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     BsplitProbaCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
+      - serializedVersion: 3
         time: 0
         value: 0.5
         inSlope: 0
         outSlope: 0.5
         tangentMode: 0
-      - serializedVersion: 2
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0.5
         outSlope: 0
         tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2716,13 +2929,13 @@ MonoBehaviour:
       x: 0
       y: 204
       width: 200
-      height: 40
+      height: 37
     deleteRect:
       serializedVersion: 2
-      x: 178
-      y: 219
-      width: 10
-      height: 10
+      x: 170
+      y: 213
+      width: 18
+      height: 18
     parentId: 0
     name: 
     TradiusMultiplier: 0.0001
@@ -2846,3 +3059,4 @@ MonoBehaviour:
   - 0.6
   saveTreeFolder: Assets
   polycount: 6619
+  MtreeVersion: 2_0

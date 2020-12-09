@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class DetectionComponent : MonoBehaviour {
 
-    public List<GameObject> visible;
     private float viewDistance = 5f;
     private float fieldOfView = 120;
     private LayerMask mask;
-
-    public float detectionRadius = 5f;
 
     void Start () {
         mask = LayerMask.GetMask("Detectable");
     }
 	
-	void FixedUpdate () {
-        visible = new List<GameObject>(); 
+	public List<GameObject> getVisibleNeighbours() {
+        List<GameObject> visible = new List<GameObject>(); 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, viewDistance, mask);
         foreach (var hitCollider in hitColliders)
         {   
@@ -26,6 +23,7 @@ public class DetectionComponent : MonoBehaviour {
                 visible.Add(neighbour);
             }
         }
+        return visible;
 	}
 
     private void OnDrawGizmosSelected()

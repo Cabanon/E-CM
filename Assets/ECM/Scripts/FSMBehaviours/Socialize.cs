@@ -25,7 +25,7 @@ public class Socialize : StateMachineBehaviour {
         nav = animator.gameObject.GetComponent<NavMeshAgent>();
         //nav.stoppingDistance = .5f;
         anim = animator;
-        detectionRadiusSqr = Mathf.Pow(detection.detectionRadius,2);
+        //detectionRadiusSqr = Mathf.Pow(detection.detectionRadius,2);
         friendsNearby = 0;
         hasWritteninDiary = false;
     }

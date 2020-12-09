@@ -1,36 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class DiaryController : MonoBehaviour {
 
-    public GameObject content;
-    public GameObject listItemPrefab;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI statusText;
+    private GameObject character;
+    public Text name;
+    public RectTransform content;
 
-    public void AddEntries(Queue<DiaryEntry> entries)
+    private GameObject owner;
+
+    public void AddEntries(Queue<DiaryEntry> entries, GameObject owner)
     {
+        if (!GameObject.ReferenceEquals(this.owner, owner))
+            return;
+
         foreach (DiaryEntry entry in entries)
-            AddEntry(entry);
+            AddEntry(entry, owner);
     }
 
-    public void UpdateNameAndStatus(string name, string status)
-    {
-        this.nameText.text = name;
-        this.statusText.text = status;
+    public void LinkCharacter(GameObject charac)
+    {   
+        character = charac;
+        name.text = charac.name;
     }
 
 	void Update () {
-		
+        List<GameObject> visible = character.GetComponent<DetectionComponent>().getVisibleNeighbours();
+        foreach (Transform child in content)
+        {
+            Destroy(child.gameObject);
+        }
+		foreach (var charac in visible) {   
+            AddName(charac.name);
+        }
 	}
 
-    public void AddEntry(DiaryEntry entry)
+    public void AddEntry(DiaryEntry entry, GameObject owner)
     {
-        GameObject item = Instantiate(listItemPrefab, content.transform) as GameObject;
-        item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = entry.time;
-        item.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.description;
+        //GameObject item = Instantiate(listItemPrefab, content.transform) as GameObject;
+        //item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = entry.time;
+        //item.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.description;
+    }
+
+    void AddName(string name)
+    {
+        GameObject item = new GameObject();
+        item.AddComponent<Text>();
+        item.GetComponent<Text>().text = name;
+        item.transform.SetParent(content);
+    }
+
+    public void SetOwner(GameObject owner)
+    {
+        this.owner = owner;
     }
 
 }
