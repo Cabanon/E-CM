@@ -34,6 +34,7 @@ public class Character : MonoBehaviour {
 
     public List<Character> friends;
 
+
     private void Start()
     {
         gameObject.name = realName;
@@ -44,6 +45,7 @@ public class Character : MonoBehaviour {
         TimeManager.instance.On5MinutesUpdate += UpdateNeeds;
         UpdateNavMeshAgentStats();
         diary = new Queue<DiaryEntry>();
+
     }
 
     public void RandomizeCharacter(string name, CharacterJob job = CharacterJob.Student)
@@ -170,6 +172,7 @@ public class Character : MonoBehaviour {
         rend.SetPropertyBlock(propBlock);
         isHighlighted = false;
     }
+
 
 }
 

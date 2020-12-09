@@ -15,9 +15,11 @@ public class CameraMovement : MonoBehaviour {
     public float speed = 5f;
     public float mouseSensitivity = 5f;
     public float zoomSpeed = 1f;
-    
     // The gamer can change the speed of all the different axis
     Camera cameraComponent;
+    private GameObject selectionManager;
+    private Character selectedCharacter;
+    public Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +28,9 @@ public class CameraMovement : MonoBehaviour {
         side = transform.right; // Vector used to pan the camera sideways
         up = Vector3.Cross(side, Vector3.up); // Vector used to pan the camera upwards
         cameraComponent.orthographic = cameraMode == CameraMode.orthographic;
-	}
+        selectionManager = GameObject.Find("SelectionManager");
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,10 +47,20 @@ public class CameraMovement : MonoBehaviour {
 
 
         // We have set three new axis (CameraVertical, CameraHorizontal, CameraZoom) in Unity (Edit -> Project settings -> Input)
-        transform.position += (up * forwardMotion + side * sideMotion) * Time.unscaledDeltaTime * speed * currentZoom;
+        selectedCharacter = selectionManager.GetComponent<SelectionManager>().selectedCharacter;
+        if (selectedCharacter == null) //player control
+        {
+            transform.position += (up * forwardMotion + side * sideMotion) * Time.unscaledDeltaTime * speed * currentZoom;
+        }
 
+        if (selectedCharacter != null) //follow a character
+        {
+
+            transform.position = new Vector3( selectedCharacter.transform.position.x , 54 , selectedCharacter.transform.position.z) + offset;
+        }
 
         float zoom = Input.GetAxis("CameraZoom") - Input.GetAxis("Mouse ScrollWheel") * mouseSensitivity * 40 * canUseMouse;
+        
 
         if (zoom != 0) 
         {
