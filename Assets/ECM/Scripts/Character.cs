@@ -9,7 +9,7 @@ public class Character : MonoBehaviour {
     public bool isSelected = false;
     [HideInInspector]
     public bool isHighlighted = false;
-    public Canvas CharacterUi;
+    public DiaryController CharacterUi;
     public DiaryController spawnedUi;
     private Queue<DiaryEntry> diary;
 
@@ -44,7 +44,7 @@ public class Character : MonoBehaviour {
         TimeManager.instance.On5MinutesUpdate += UpdateNeeds;
         UpdateNavMeshAgentStats();
         diary = new Queue<DiaryEntry>();
-        CharacterUi = GameObject.Find("CharacterInfoCanvas").GetComponent<Canvas>();
+        CharacterUi = GameObject.Find("CharacterInfoCanvas").GetComponent<DiaryController>();
     }
 
     public void RandomizeCharacter(string name, CharacterJob job = CharacterJob.Student)
@@ -119,12 +119,6 @@ public class Character : MonoBehaviour {
             nav.speed *= physicalCondition;
     }
 
-    public void SpawnCharacterUi()
-    {
-        spawnedUi = Instantiate(CharacterUi).GetComponent<DiaryController>();
-        spawnedUi.LinkCharacter(gameObject);
-    }
-
     public void AddDiaryEntry(string description)
     {
         DiaryEntry entry = new DiaryEntry(TimeManager.instance.timeOfDay, description);
@@ -136,17 +130,16 @@ public class Character : MonoBehaviour {
     public void Select()
     {
         isSelected = true;
-        OnVisual();
-        //SpawnCharacterUi();
+        CharacterUi.LinkCharacter(gameObject);
     }
 
     public void Deselect()
     {
         isSelected = false;
-        OffVisual();
+        CharacterUi.Unlink();
     }
 
-    public void OnVisual() //display character name and change its color
+    void OnMouseEnter()
     {
         MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
         Renderer rend = GetComponentInChildren<Renderer>();
@@ -156,7 +149,7 @@ public class Character : MonoBehaviour {
         isHighlighted = true;
     }
 
-    public void OffVisual() // hide character name and give it back its initial color
+    private void OnMouseExit()
     {
         MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
         Renderer rend = GetComponentInChildren<Renderer>();
