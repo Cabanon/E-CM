@@ -15,6 +15,7 @@ public class CameraMovement : MonoBehaviour {
     public float speed = 5f;
     public float mouseSensitivity = 5f;
     public float zoomSpeed = 1f;
+    private bool follow = false;
     // The gamer can change the speed of all the different axis
     Camera cameraComponent;
     private GameObject selectionManager;
@@ -48,12 +49,12 @@ public class CameraMovement : MonoBehaviour {
 
         // We have set three new axis (CameraVertical, CameraHorizontal, CameraZoom) in Unity (Edit -> Project settings -> Input)
         selectedCharacter = selectionManager.GetComponent<SelectionManager>().selectedCharacter;
-        if (selectedCharacter == null) //player control
+        if (selectedCharacter == null || follow == false) //player control
         {
             transform.position += (up * forwardMotion + side * sideMotion) * Time.unscaledDeltaTime * speed * currentZoom;
         }
 
-        if (selectedCharacter != null) //follow a character
+        if (selectedCharacter != null && follow == true) //follow a character
         {
             transform.position = new Vector3( selectedCharacter.transform.position.x , 54 , selectedCharacter.transform.position.z) + offset;
         }
@@ -86,4 +87,10 @@ public class CameraMovement : MonoBehaviour {
             }
         }
     }
+
+   public void SwitchMode()
+    {
+        follow = !follow;
+    }
+
 }

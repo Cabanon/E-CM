@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 2358375355649169103}
   - component: {fileID: 5078857074988822084}
   - component: {fileID: 4686646139725995413}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Ears
   m_TagString: Untagged
   m_Icon: {fileID: 0}
