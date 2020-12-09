@@ -130,16 +130,18 @@ public class Character : MonoBehaviour {
     public void Select()
     {
         isSelected = true;
+        OnVisual();
         CharacterUi.LinkCharacter(gameObject);
     }
 
     public void Deselect()
     {
         isSelected = false;
+        OffVisual();
         CharacterUi.Unlink();
     }
 
-    void OnMouseEnter()
+    public void OnVisual() //display character name and change its color
     {
         MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
         Renderer rend = GetComponentInChildren<Renderer>();
@@ -149,7 +151,7 @@ public class Character : MonoBehaviour {
         isHighlighted = true;
     }
 
-    private void OnMouseExit()
+    public void OffVisual() // hide character name and give it back its initial color
     {
         MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
         Renderer rend = GetComponentInChildren<Renderer>();
@@ -160,6 +162,8 @@ public class Character : MonoBehaviour {
     }
 
 }
+
+
 
 
 public enum Mood {Calm, Happy, Flirty, Tired, Bored, Depressed, Sad, Angry, Hungry, Thirsty, Neutral}
