@@ -19,7 +19,7 @@ public class CameraMovement : MonoBehaviour {
     Camera cameraComponent;
     private GameObject selectionManager;
     private Character selectedCharacter;
-    public Vector3 offset;
+    public Vector3 offset = new Vector3 (40.8f, 0, -16.8f);
 
 	// Use this for initialization
 	void Start () {
@@ -55,7 +55,6 @@ public class CameraMovement : MonoBehaviour {
 
         if (selectedCharacter != null) //follow a character
         {
-
             transform.position = new Vector3( selectedCharacter.transform.position.x , 54 , selectedCharacter.transform.position.z) + offset;
         }
 

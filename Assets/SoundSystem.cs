@@ -48,7 +48,7 @@ public class SoundSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) // add the sound in range in the sounds list
     {
-        if (other.gameObject.layer == 10) //Put 10 because mask.value() didn't work and was equal to 1024 but why ???
+        if (other.gameObject.layer == 10) //Put 10 (value of Sound Layer) because mask.value() didn't work and was equal to 1024 but why ???
         {
             sounds.Add(other.gameObject);
         }
@@ -56,7 +56,7 @@ public class SoundSystem : MonoBehaviour
 
     private void OnTriggerExit(Collider other) // remove the sound not in range in the sounds list
     {
-        if (other.gameObject.layer == 10) //Put 10 because mask.value() didn't work and was equal to 1024 but why ???
+        if (other.gameObject.layer == 10) //Put 10 (value of Sound Layer) because mask.value() didn't work and was equal to 1024 but why ???
         {
             if (isSelected)
             {
