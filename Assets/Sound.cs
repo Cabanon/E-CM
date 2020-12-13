@@ -6,7 +6,7 @@ public class Sound : MonoBehaviour
 {
     //variables that should be modified when the sound is instantiate (soundProperties)
     public float soundIntensity; //distance detection of the sound
-    public float soundForce; //number of wall that can be pass by sound
+    public int soundForce; //number of wall that can be pass by sound
     public float lifeTime;
     public string soundName;
 
