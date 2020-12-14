@@ -7,9 +7,11 @@ public class DetectionComponent : MonoBehaviour {
     private float viewDistance = 5f;
     private float fieldOfView = 120;
     private LayerMask mask;
+    private LayerMask buildings;
 
     void Start () {
         mask = LayerMask.GetMask("Detectable");
+        buildings = LayerMask.GetMask("Buildings");
     }
 	
 	public List<GameObject> getVisibleNeighbours() {
@@ -20,7 +22,11 @@ public class DetectionComponent : MonoBehaviour {
             GameObject neighbour = hitCollider.gameObject;
             float angle = Vector3.Angle(transform.forward, neighbour.transform.position - transform.position);
             if (neighbour.transform != transform & angle < fieldOfView / 2) {
-                visible.Add(neighbour);
+                bool isWall = Physics.Linecast(transform.position, neighbour.transform.position, buildings);
+                if (!isWall)
+                {
+                    visible.Add(neighbour);
+                }
             }
         }
         return visible;

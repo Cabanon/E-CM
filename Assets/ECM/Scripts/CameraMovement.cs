@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CameraMovement : MonoBehaviour {
 
@@ -16,11 +17,14 @@ public class CameraMovement : MonoBehaviour {
     public float mouseSensitivity = 5f;
     public float zoomSpeed = 1f;
     private bool follow = false;
+    public GameObject followToggle;
     // The gamer can change the speed of all the different axis
     Camera cameraComponent;
     private GameObject selectionManager;
     private Character selectedCharacter;
     public Vector3 offset = new Vector3 (40.8f, 0, -16.8f);
+
+    private float onPause;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +40,12 @@ public class CameraMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetButtonDown("Follow"))
+        {
+            followToggle.GetComponent<Toggle>().isOn = !followToggle.GetComponent<Toggle>().isOn;
+        }
+
         Vector3 move = Vector3.zero;
         // To be sure that Vector3 is a vector of zeros
 
@@ -44,7 +54,6 @@ public class CameraMovement : MonoBehaviour {
 
         float forwardMotion = Input.GetAxis("CameraVertical") - Input.GetAxis("Mouse Y") * mouseMovement / Time.unscaledDeltaTime / 100;
         float sideMotion = Input.GetAxis("CameraHorizontal") - Input.GetAxis("Mouse X") * mouseMovement / Time.unscaledDeltaTime / 100;
-
 
 
         // We have set three new axis (CameraVertical, CameraHorizontal, CameraZoom) in Unity (Edit -> Project settings -> Input)
@@ -56,7 +65,7 @@ public class CameraMovement : MonoBehaviour {
 
         if (selectedCharacter != null && follow == true) //follow a character
         {
-            transform.position = new Vector3( selectedCharacter.transform.position.x , 54 , selectedCharacter.transform.position.z) + offset;
+            transform.position = new Vector3( selectedCharacter.transform.position.x , selectedCharacter.transform.position.y+61 , selectedCharacter.transform.position.z) + offset;
         }
 
         float zoom = Input.GetAxis("CameraZoom") - Input.GetAxis("Mouse ScrollWheel") * mouseSensitivity * 40 * canUseMouse;
@@ -88,9 +97,10 @@ public class CameraMovement : MonoBehaviour {
         }
     }
 
-   public void SwitchMode()
+   public void SwitchMode() //linked to follox player checkbox on the UI
     {
         follow = !follow;
+        if (!follow) { transform.position = new Vector3 (transform.position.x, 54, transform.position.z); }
     }
 
 }

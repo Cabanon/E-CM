@@ -14,6 +14,8 @@ public class TimeManager : MonoBehaviour { // La méthode Update() de Monobehavi
     public Text clockUi;
     public Text timeSpeedUi;
     public bool displayTimeInConsole = false;
+    [HideInInspector]
+    public bool pause;
 
     private void Awake()
     {
@@ -61,14 +63,33 @@ public class TimeManager : MonoBehaviour { // La méthode Update() de Monobehavi
 
     private void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetButtonDown("TimeSpeed"))
         {
            SetTimeScale(Time.timeScale * 2);
         }
-        if (Input.GetKeyDown("m"))
+        if (Input.GetButtonDown("TimeSlow"))
         {
             float scale = Time.timeScale == 100 ? 64 : Time.timeScale / 2;
             SetTimeScale(scale);
+        }
+
+        if (Input.GetButtonDown("Pause"))
+        {
+            pause = !pause;
+
+            if (pause)
+            {
+                Time.timeScale = 0.005f;
+                if (timeSpeedUi != null)
+                    timeSpeedUi.text = string.Format("II");
+            }
+
+            if (!pause)
+            {
+                Time.timeScale = 1;
+                if (timeSpeedUi != null)
+                    timeSpeedUi.text = string.Format("x{0}", Time.timeScale);
+            }
         }
 
         if (Input.GetKeyDown("o"))

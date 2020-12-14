@@ -12,6 +12,14 @@ public class DiaryController : MonoBehaviour {
 
     private GameObject owner;
 
+    [HideInInspector]
+    public bool viewToggle = false;
+    [HideInInspector]
+    public bool hearingToggle = false;
+    [HideInInspector]
+    public bool showInfo = true;
+    public GameObject info;
+
     public void AddEntries(Queue<DiaryEntry> entries, GameObject owner)
     {
         if (!GameObject.ReferenceEquals(this.owner, owner))
@@ -32,16 +40,22 @@ public class DiaryController : MonoBehaviour {
         title.text = "No character selected";
     }
 
-	void Update () {
-        if (character) {
-            List<GameObject> visible = character.GetComponent<DetectionComponent>().getVisibleNeighbours();
-            foreach (Transform child in content)
-            {
-                Destroy(child.gameObject);
-            }
-            foreach (var charac in visible) {
-                AddName(charac.name);
-            }
+	void Update () 
+    {
+        if (Input.GetButtonDown("Info"))
+        {
+            showInfo = !showInfo;
+        }
+
+        info.SetActive(showInfo);
+
+        if (character)
+        {
+            viewToggle = gameObject.GetComponent<TabController>().viewToggle;
+            hearingToggle = gameObject.GetComponent<TabController>().hearingToggle;
+
+            showHearing();
+            showView();
         }
 	}
 
@@ -64,6 +78,37 @@ public class DiaryController : MonoBehaviour {
         this.owner = owner;
     }
 
+    private void showView()
+    {
+        if (viewToggle)
+        {
+            List<GameObject> visible = character.GetComponent<DetectionComponent>().getVisibleNeighbours();
+            foreach (Transform child in content)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (var charac in visible)
+            {
+                AddName(charac.name);
+            }
+        }
+    }
+
+    private void showHearing()
+    {
+        if (hearingToggle)
+        {
+            List<GameObject> audible = character.GetComponentInChildren<SoundSystem>().earedSounds;
+            foreach (Transform child in content)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (var sound in audible)
+            {
+                AddName(sound.gameObject.GetComponent<Sound>().soundName);
+            }
+        }
+    }
 }
 
 public struct DiaryEntry
@@ -76,4 +121,6 @@ public struct DiaryEntry
         this.time = time.ToString();
         this.description = description;
     }
+
+
 }

@@ -69,12 +69,12 @@ public class SoundSystem : MonoBehaviour
             int wallNumber = hits.Length;
             int soundForce = sound.GetComponent<Sound>().soundForce;
 
-            if (wallNumber <= soundForce)
+            if (wallNumber <= soundForce && !earedSounds.Contains(sound))
             {
                 earedSounds.Add(sound);
             }
 
-            if (wallNumber > soundForce)
+            if (wallNumber > soundForce && earedSounds.Contains(sound))
             {
                 earedSounds.Remove(sound);
 
