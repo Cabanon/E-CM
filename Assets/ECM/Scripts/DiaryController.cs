@@ -17,6 +17,10 @@ public class DiaryController : MonoBehaviour {
     [HideInInspector]
     public bool hearingToggle = false;
     [HideInInspector]
+    public bool diaryToggle = false;
+    [HideInInspector]
+    public bool needsToggle = false;
+    [HideInInspector]
     public bool showInfo = true;
     public GameObject info;
 
@@ -32,7 +36,7 @@ public class DiaryController : MonoBehaviour {
     public void LinkCharacter(GameObject charac)
     {   
         character = charac;
-        title.text = charac.name;
+        title.text = charac.name + "\n(" + character.GetComponent<Character>().job.ToString()+")";
     }
 
     public void Unlink() {
@@ -53,9 +57,13 @@ public class DiaryController : MonoBehaviour {
         {
             viewToggle = gameObject.GetComponent<TabController>().viewToggle;
             hearingToggle = gameObject.GetComponent<TabController>().hearingToggle;
+            diaryToggle = gameObject.GetComponent<TabController>().diaryToggle;
+            needsToggle = gameObject.GetComponent<TabController>().needsToggle;
 
             showHearing();
             showView();
+            showDiary();
+            showNeeds();
         }
 	}
 
@@ -109,6 +117,48 @@ public class DiaryController : MonoBehaviour {
             }
         }
     }
+
+    private void showDiary()
+    {
+        if (diaryToggle)
+        {
+            Queue<DiaryEntry> diary = character.GetComponent<Character>().diary;
+
+            foreach (Transform child in content)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (DiaryEntry entry in diary)
+            {
+                string entree = entry.time + " : " + entry.description;
+                AddName(entree);
+            }
+        }
+    }
+
+    private void showNeeds()
+    {
+        if (needsToggle)
+        {
+            float toiletBuildup = Mathf.Round(character.GetComponent<Character>().toiletBuildup*100);
+            float foodBuildup = Mathf.Round(character.GetComponent<Character>().foodBuildup * 100);
+            float cafeineBuildup = Mathf.Round(character.GetComponent<Character>().cafeineBuildup * 100);
+
+            foreach (Transform child in content)
+            {
+                Destroy(child.gameObject);
+            }
+
+            string toiletNeed = "Toilet Need : " + toiletBuildup.ToString() + "/100";
+            string foodNeed = "Food Need : " + foodBuildup.ToString() + "/100";
+            string cafeintNeed = "Cafein Need : " + cafeineBuildup.ToString() + "/100";
+
+            AddName(toiletNeed);
+            AddName(foodNeed);
+            AddName(cafeintNeed);
+        }
+    }
+
 }
 
 public struct DiaryEntry

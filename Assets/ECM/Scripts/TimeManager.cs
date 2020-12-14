@@ -81,7 +81,7 @@ public class TimeManager : MonoBehaviour { // La méthode Update() de Monobehavi
             {
                 Time.timeScale = 0.005f;
                 if (timeSpeedUi != null)
-                    timeSpeedUi.text = string.Format("II");
+                    timeSpeedUi.text = string.Format("  II");
             }
 
             if (!pause)

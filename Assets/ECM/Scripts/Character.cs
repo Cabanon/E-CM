@@ -11,7 +11,7 @@ public class Character : MonoBehaviour {
     public bool isHighlighted = false;
     public DiaryController CharacterUi;
     public DiaryController spawnedUi;
-    private Queue<DiaryEntry> diary;
+    public Queue<DiaryEntry> diary;
 
     public string realName;
     public CharacterJob job = CharacterJob.Student;
@@ -123,8 +123,6 @@ public class Character : MonoBehaviour {
     {
         DiaryEntry entry = new DiaryEntry(TimeManager.instance.timeOfDay, description);
         diary.Enqueue(entry);
-        if (spawnedUi != null)
-            spawnedUi.AddEntry(entry, gameObject);
     }
 
     public void Select()
