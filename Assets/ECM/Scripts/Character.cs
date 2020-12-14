@@ -129,6 +129,7 @@ public class Character : MonoBehaviour {
     {
         isSelected = true;
         OnVisual();
+        GameObject.Find("FollowToggle").GetComponent<Toggle>().isOn = true;
         CharacterUi.LinkCharacter(gameObject);
     }
 

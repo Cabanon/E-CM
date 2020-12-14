@@ -40,7 +40,7 @@ public class CameraMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        follow = GameObject.Find("CharacterInfoCanvas").GetComponent<TabController>().follow;
         if (Input.GetButtonDown("Follow"))
         {
             followToggle.GetComponent<Toggle>().isOn = !followToggle.GetComponent<Toggle>().isOn;
@@ -55,6 +55,7 @@ public class CameraMovement : MonoBehaviour {
         float forwardMotion = Input.GetAxis("CameraVertical") - Input.GetAxis("Mouse Y") * mouseMovement / Time.unscaledDeltaTime / 100;
         float sideMotion = Input.GetAxis("CameraHorizontal") - Input.GetAxis("Mouse X") * mouseMovement / Time.unscaledDeltaTime / 100;
 
+        if (followToggle.GetComponent<Toggle>().isOn &&( forwardMotion != 0 || sideMotion != 0)) { followToggle.GetComponent<Toggle>().isOn = false; }
 
         // We have set three new axis (CameraVertical, CameraHorizontal, CameraZoom) in Unity (Edit -> Project settings -> Input)
         selectedCharacter = selectionManager.GetComponent<SelectionManager>().selectedCharacter;
@@ -97,10 +98,6 @@ public class CameraMovement : MonoBehaviour {
         }
     }
 
-   public void SwitchMode() //linked to follox player checkbox on the UI
-    {
-        follow = !follow;
-        if (!follow) { transform.position = new Vector3 (transform.position.x, 54, transform.position.z); }
-    }
+
 
 }

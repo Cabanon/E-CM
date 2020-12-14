@@ -9,6 +9,7 @@ public class TabController : MonoBehaviour
     public bool hearingToggle = false;
     public bool diaryToggle = false;
     public bool needsToggle = false;
+    public bool follow = false;
 
     public void Hearing()
     {
@@ -45,6 +46,12 @@ public class TabController : MonoBehaviour
     public void Close()
     {
         gameObject.GetComponent<DiaryController>().showInfo = false;
+    }
+
+    public void SwitchMode() //linked to follox player checkbox on the UI
+    {
+        follow = !follow;
+        if (!follow) { transform.position = new Vector3(transform.position.x, 54, transform.position.z); }
     }
 }
 
