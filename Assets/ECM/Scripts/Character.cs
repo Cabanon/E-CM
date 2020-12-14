@@ -129,7 +129,7 @@ public class Character : MonoBehaviour {
     {
         isSelected = true;
         OnVisual();
-        GameObject.Find("FollowToggle").GetComponent<Toggle>().isOn = true;
+        GameObject.Find("MainCamera").GetComponent<CameraMovement>().ChangeFollowToggle();
         CharacterUi.LinkCharacter(gameObject);
     }
 

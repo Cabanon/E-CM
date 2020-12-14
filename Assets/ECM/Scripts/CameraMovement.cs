@@ -43,7 +43,7 @@ public class CameraMovement : MonoBehaviour {
         follow = GameObject.Find("CharacterInfoCanvas").GetComponent<TabController>().follow;
         if (Input.GetButtonDown("Follow"))
         {
-            followToggle.GetComponent<Toggle>().isOn = !followToggle.GetComponent<Toggle>().isOn;
+            ChangeFollowToggle();
         }
 
         Vector3 move = Vector3.zero;
@@ -98,6 +98,9 @@ public class CameraMovement : MonoBehaviour {
         }
     }
 
-
+    public void ChangeFollowToggle()
+    {
+        followToggle.GetComponent<Toggle>().isOn = !followToggle.GetComponent<Toggle>().isOn;
+    }
 
 }

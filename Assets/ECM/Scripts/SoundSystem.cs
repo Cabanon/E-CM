@@ -68,6 +68,8 @@ public class SoundSystem : MonoBehaviour
             hits = Physics.RaycastAll(fromPosition,direction, distance, Buildings);
             int wallNumber = hits.Length;
             int soundForce = sound.GetComponent<Sound>().soundForce;
+            
+            //if (isSelected) { Debug.Log(wallNumber); }
 
             if (wallNumber <= soundForce && !earedSounds.Contains(sound))
             {
