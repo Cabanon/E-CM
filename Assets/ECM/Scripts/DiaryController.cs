@@ -37,6 +37,7 @@ public class DiaryController : MonoBehaviour {
     {   
         character = charac;
         title.text = charac.name + "\n(" + character.GetComponent<Character>().job.ToString()+")";
+        showInfo = true;
     }
 
     public void Unlink() {
@@ -44,11 +45,15 @@ public class DiaryController : MonoBehaviour {
         title.text = "No character selected";
     }
 
+    public void Toggle() {
+        showInfo = !showInfo;
+    }
+
 	void Update () 
     {
         if (Input.GetButtonDown("Info"))
         {
-            showInfo = !showInfo;
+            Toggle();
         }
 
         info.SetActive(showInfo);
