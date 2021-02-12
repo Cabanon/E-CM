@@ -8,6 +8,7 @@ public class SelectionManager : MonoBehaviour {
     public static SelectionManager instance;
     public Camera cam;
     public Character selectedCharacter = null;
+    public bool center;
     private LayerMask mask;
     private Character character;
     private Character visualCharacter = null;
@@ -57,6 +58,7 @@ public class SelectionManager : MonoBehaviour {
                     selectedCharacter.Deselect();
                 character.Select();
                 selectedCharacter = character;
+                Camera.main.GetComponent<CameraMovement>().center = true;
             }
         }
     }
