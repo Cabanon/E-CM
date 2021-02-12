@@ -41,7 +41,7 @@ public class Character : MonoBehaviour {
         foodBuildup = 0;
         cafeineBuildup = 0;
         //friends = new List<Character>();
-        TimeManager.instance.On5MinutesUpdate += UpdateNeeds;
+        TimeManager.instance.EveryMinuteUpdate += UpdateNeeds;
         UpdateNavMeshAgentStats();
         diary = new Queue<DiaryEntry>();
         CharacterUi = GameObject.Find("CharacterInfoCanvas").GetComponent<DiaryController>();
@@ -65,9 +65,9 @@ public class Character : MonoBehaviour {
     public void UpdateNeeds()
     {
         float buildupSpeed = CharacterManager.instance.needsBuildupSpeed;
-        toiletBuildup += buildupSpeed / 48; // 4 hours to reach 1
-        foodBuildup += buildupSpeed / 36; // 3 hours to reach 1
-        cafeineBuildup += buildupSpeed / 15; // 1h15 to reach 1
+        toiletBuildup += buildupSpeed / 240; // 4 hours to reach 1
+        foodBuildup += buildupSpeed / 180; // 3 hours to reach 1
+        cafeineBuildup += buildupSpeed / 75; // 1h15 to reach 1
     }
 
     public bool NeedsFood()
