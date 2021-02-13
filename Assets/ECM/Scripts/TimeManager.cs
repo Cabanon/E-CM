@@ -9,17 +9,19 @@ public class TimeManager : MonoBehaviour { // La méthode Update() de Monobehavi
     public static TimeManager instance;
     public TimeOfDay timeOfDay;
     public delegate void Action();
-    public event Action On5MinutesUpdate; // // Will call event every 5 minutes (in game time)
+    public event Action EveryMinuteUpdate; // // Will call event every minute (in game time)
     public UnityEvent OnQuarterUpdate = new UnityEvent();
     public Text clockUi;
     public Text timeSpeedUi;
     public bool displayTimeInConsole = false;
     [HideInInspector]
     public bool pause;
+    private float fixedDeltaTime;
 
     private void Awake()
     {
         instance = this;
+        this.fixedDeltaTime = Time.fixedDeltaTime;
     }
 
     // Use this for initialization
@@ -34,16 +36,11 @@ public class TimeManager : MonoBehaviour { // La méthode Update() de Monobehavi
     {
         timeOfDay.AddOneMinute();
         DisplayTime();
-        if (timeOfDay.Is5Min())
-        {
-            if (On5MinutesUpdate != null)
-                On5MinutesUpdate();
-        }
+        if (EveryMinuteUpdate != null) 
+            EveryMinuteUpdate();
 
         if (timeOfDay.IsQuarterHour()) // Will be true every 15 in game minutes
-        {
             OnQuarterUpdate.Invoke();
-        }
     }
 
     public void DisplayTime()
@@ -83,15 +80,18 @@ public class TimeManager : MonoBehaviour { // La méthode Update() de Monobehavi
                 if (timeSpeedUi != null)
                     timeSpeedUi.text = string.Format("  II");
             }
-
-            if (!pause)
+            else
             {
                 Time.timeScale = 1;
                 if (timeSpeedUi != null)
                     timeSpeedUi.text = string.Format("x{0}", Time.timeScale);
             }
         }
+ 
+        // Adjust fixed delta time according to timescale
+        Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
 
+        /*
         if (Input.GetKeyDown("o"))
         {
             for (int i=0; i<3; i++)
@@ -102,6 +102,7 @@ public class TimeManager : MonoBehaviour { // La méthode Update() de Monobehavi
             }
             OnQuarterUpdate.Invoke();            
         }
+        */
     }
 }
 

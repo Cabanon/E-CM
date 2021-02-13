@@ -10,6 +10,10 @@ public class DiaryController : MonoBehaviour {
     public RectTransform content;
     public GameObject listItem;
 
+    public Image coffeeBar;
+    public Image toiletBar;
+    public Image foodBar;
+
     private GameObject owner;
 
     [HideInInspector]
@@ -68,7 +72,7 @@ public class DiaryController : MonoBehaviour {
             showHearing();
             showView();
             showDiary();
-            showNeeds();
+            updateNeeds();
         }
 	}
 
@@ -141,29 +145,13 @@ public class DiaryController : MonoBehaviour {
         }
     }
 
-    private void showNeeds()
+    private void updateNeeds()
     {
-        if (needsToggle)
-        {
-            float toiletBuildup = Mathf.Round(character.GetComponent<Character>().toiletBuildup*100);
-            float foodBuildup = Mathf.Round(character.GetComponent<Character>().foodBuildup * 100);
-            float cafeineBuildup = Mathf.Round(character.GetComponent<Character>().cafeineBuildup * 100);
-
-            foreach (Transform child in content)
-            {
-                Destroy(child.gameObject);
-            }
-
-            string toiletNeed = "Toilet Need : " + toiletBuildup.ToString() + "/100";
-            string foodNeed = "Food Need : " + foodBuildup.ToString() + "/100";
-            string cafeintNeed = "Cafein Need : " + cafeineBuildup.ToString() + "/100";
-
-            AddName(toiletNeed);
-            AddName(foodNeed);
-            AddName(cafeintNeed);
-        }
+        toiletBar.fillAmount = character.GetComponent<Character>().toiletBuildup;
+        foodBar.fillAmount = character.GetComponent<Character>().foodBuildup;
+        coffeeBar.fillAmount = character.GetComponent<Character>().cafeineBuildup;
     }
-
+ 
 }
 
 public struct DiaryEntry
