@@ -7,7 +7,7 @@ public class MandatoryMovement : StateMachineBehaviour {
 
     AgendaComponent ag;
     NavMeshAgent agent;
-
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -46,4 +46,5 @@ public class MandatoryMovement : StateMachineBehaviour {
     {
 
     }
+    
 }

@@ -56,9 +56,10 @@ public class SelectionManager : MonoBehaviour {
             {
                 if (selectedCharacter != null)
                     selectedCharacter.Deselect();
+                Camera.main.GetComponent<CameraMovement>().center = true;
                 character.Select();
                 selectedCharacter = character;
-                Camera.main.GetComponent<CameraMovement>().center = true;
+                
             }
         }
     }

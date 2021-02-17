@@ -46,7 +46,7 @@ public class CameraMovement : MonoBehaviour {
     void Update()
     {
         //follow = GameObject.Find("CharacterInfoCanvas").GetComponent<TabController>().follow;
-        center = false;
+        
         if (Input.GetButtonDown("Follow") && selectedCharacter!=null)
         {
             follow = !follow;
@@ -113,6 +113,8 @@ public class CameraMovement : MonoBehaviour {
                 currentZoom = newZoomValue;
             }
         }
+
+        center = false;
     }
 
     public void ChangeFollowToggle()

@@ -12,6 +12,7 @@ public class Character : MonoBehaviour {
     public DiaryController CharacterUi;
     public DiaryController spawnedUi;
     public Queue<DiaryEntry> diary;
+    public Animator animator;
 
     public string realName;
     public CharacterJob job = CharacterJob.Student;
@@ -36,6 +37,7 @@ public class Character : MonoBehaviour {
 
     private void Start()
     {
+        animator = this.gameObject.GetComponent<Animator>();
         gameObject.name = realName;
         toiletBuildup = 0;
         foodBuildup = 0;
@@ -45,6 +47,14 @@ public class Character : MonoBehaviour {
         UpdateNavMeshAgentStats();
         diary = new Queue<DiaryEntry>();
         CharacterUi = GameObject.Find("CharacterInfoCanvas").GetComponent<DiaryController>();
+    }
+
+    private void Update()
+    {
+        if (NeedsCafein())
+        {
+            animator.SetTrigger("Coffee");
+        }
     }
 
     public void RandomizeCharacter(string name, CharacterJob job = CharacterJob.Student)
