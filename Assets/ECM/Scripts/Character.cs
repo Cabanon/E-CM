@@ -70,6 +70,9 @@ public class Character : MonoBehaviour {
         UpdateNavMeshAgentStats();
         RandomColor();
         this.job = job;
+
+        int pick = Random.Range(0, System.Enum.GetNames(typeof(Mood)).Length);
+        mood = (Mood) pick;
     }
 
     public void UpdateNeeds()
@@ -172,9 +175,11 @@ public class Character : MonoBehaviour {
 
 }
 
+Dictionary<string, Sprite> moods = new Dictionary<string, Sprite> {
+    {"Calm", Resources.Load<Sprite>("Calm")},
+    {"Happy", Resources.Load<Sprite>("Happy")}
+};
 
-
-
-public enum Mood {Calm, Happy, Flirty, Tired, Bored, Depressed, Sad, Angry, Hungry, Thirsty, Neutral}
+//Happy, Flirty, Tired, Bored, Depressed, Sad, Angry, Hungry, Thirsty, Neutral}
 
 public enum CharacterJob { Student, Professor, Administration, Worker}
