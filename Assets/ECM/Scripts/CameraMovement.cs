@@ -28,8 +28,6 @@ public class CameraMovement : MonoBehaviour {
     public GameObject cameraParent;
     public GameObject camFirstObject;
 
-    private float onPause;
-
 	// Use this for initialization
 	void Start () {
         cameraParent = this.transform.parent.gameObject;
@@ -45,7 +43,6 @@ public class CameraMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //follow = GameObject.Find("CharacterInfoCanvas").GetComponent<TabController>().follow;
         
         if (Input.GetButtonDown("Follow") && selectedCharacter!=null)
         {
@@ -79,10 +76,10 @@ public class CameraMovement : MonoBehaviour {
 
         if (selectedCharacter != null && follow == true) //follow a character
         {
-            camFirstObject.transform.position = new Vector3( selectedCharacter.transform.position.x , selectedCharacter.transform.position.y , selectedCharacter.transform.position.z);
+            camFirstObject.transform.position = new Vector3( selectedCharacter.transform.position.x, selectedCharacter.transform.position.y , selectedCharacter.transform.position.z);
             if (center)
             {
-                cameraParent.transform.position = camFirstObject.transform.position ;
+                cameraParent.transform.localPosition = new Vector3( 0 , 0 , 0);
             }
         }
 
@@ -117,9 +114,6 @@ public class CameraMovement : MonoBehaviour {
         center = false;
     }
 
-    public void ChangeFollowToggle()
-    {
-        
-    }
+ 
 
 }

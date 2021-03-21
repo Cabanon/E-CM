@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DiaryController : MonoBehaviour {
 
-    private GameObject character;
+    private Character character;
     public Text title;
     public RectTransform content;
     public GameObject listItem;
@@ -27,6 +27,15 @@ public class DiaryController : MonoBehaviour {
     [HideInInspector]
     public bool showInfo = true;
     public GameObject info;
+    private GameObject selectionManager;
+    public Text texte_prefab;
+
+
+    private void Start()
+    {
+        selectionManager = GameObject.Find("SelectionManager");
+        Toggle();
+    }
 
     public void AddEntries(Queue<DiaryEntry> entries, GameObject owner)
     {
@@ -37,10 +46,10 @@ public class DiaryController : MonoBehaviour {
             AddEntry(entry, owner);
     }
 
-    public void LinkCharacter(GameObject charac)
+    public void LinkCharacter()
     {   
-        character = charac;
-        title.text = charac.name + "\n(" + character.GetComponent<Character>().job.ToString()+")";
+        character = selectionManager.GetComponent<SelectionManager>().selectedCharacter;
+        title.text = character.gameObject.GetComponent<Character>().realName + "\n(" + character.gameObject.GetComponent<Character>().job.ToString()+")";
         showInfo = true;
     }
 
@@ -85,9 +94,8 @@ public class DiaryController : MonoBehaviour {
 
     void AddName(string name)
     {
-        GameObject item = Instantiate(listItem);
-        item.GetComponent<Text>().text = name;
-        item.transform.SetParent(content);
+        Text texte = Instantiate(texte_prefab, content);
+        texte.text = name;
     }
 
     public void SetOwner(GameObject owner)
@@ -106,7 +114,7 @@ public class DiaryController : MonoBehaviour {
             }
             foreach (var charac in visible)
             {
-                AddName(charac.name);
+                AddName(charac.gameObject.GetComponent<Character>().realName);
             }
         }
     }

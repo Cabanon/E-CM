@@ -142,8 +142,7 @@ public class Character : MonoBehaviour {
     {
         isSelected = true;
         OnVisual();
-        GameObject.Find("MainCamera").GetComponent<CameraMovement>().ChangeFollowToggle();
-        CharacterUi.LinkCharacter(gameObject);
+        CharacterUi.LinkCharacter();
     }
 
     public void Deselect()
@@ -175,10 +174,12 @@ public class Character : MonoBehaviour {
 
 }
 
-Dictionary<string, Sprite> moods = new Dictionary<string, Sprite> {
-    {"Calm", Resources.Load<Sprite>("Calm")},
-    {"Happy", Resources.Load<Sprite>("Happy")}
-};
+public enum Mood { Calm, Happy, Flirty, Tired, Bored, Depressed, Sad, Angry, Hungry, Thirsty, Neutral }
+
+ //Dictionary<string, Sprite> moods = new Dictionary<string, Sprite> {
+ //   {"Calm", Resources.Load<Sprite>("Calm")},
+ //   {"Happy", Resources.Load<Sprite>("Happy")}
+//};
 
 //Happy, Flirty, Tired, Bored, Depressed, Sad, Angry, Hungry, Thirsty, Neutral}
 

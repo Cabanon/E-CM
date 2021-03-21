@@ -12,6 +12,7 @@ public class SelectionManager : MonoBehaviour {
     private LayerMask mask;
     private Character character;
     private Character visualCharacter = null;
+    private GameObject diary;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class SelectionManager : MonoBehaviour {
     void Start () {
         cam = Camera.main;
         mask = LayerMask.GetMask("Detectable");
-
+        diary = GameObject.Find("CharacterInfoCanvas");
     }
 
     private void Update()
@@ -33,7 +34,7 @@ public class SelectionManager : MonoBehaviour {
 
         var distance = 0f;
         character = null;
-        foreach (RaycastHit hit in hits) //select the closest character from the mouse point
+        foreach (RaycastHit hit in hits) //select the closest character below the mouse cursor
         {
             if (1 / hit.distance > distance && hit.collider.gameObject.tag == "Player")
             {
@@ -57,8 +58,9 @@ public class SelectionManager : MonoBehaviour {
                 if (selectedCharacter != null)
                     selectedCharacter.Deselect();
                 Camera.main.GetComponent<CameraMovement>().center = true;
-                character.Select();
                 selectedCharacter = character;
+                character.Select();
+                diary.GetComponent<DiaryController>().showInfo = true;
                 
             }
         }
