@@ -7,7 +7,7 @@ public class VisibilityManager : MonoBehaviour {
     public static VisibilityManager instance = null;
     public int maxLevel = 4;
     public int minLevel = -2;
-    private int level = 4; // curent level seen by the camera
+    public int level = 4; // curent level seen by the camera
     private Dictionary<int, List<GameObject>> levelsDict; // Dictionary storring all GameObjects of each level
 
     void Awake()
@@ -58,7 +58,7 @@ public class VisibilityManager : MonoBehaviour {
 
 
 
-    private void ChangeLevel(int direction)
+    public void ChangeLevel(int direction)
     {
         if (direction == 1 && levelsDict.ContainsKey(level + 1)) // revealing upper level
         {

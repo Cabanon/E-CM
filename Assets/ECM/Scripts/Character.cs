@@ -31,12 +31,20 @@ public class Character : MonoBehaviour {
     public float foodBuildup = 0;
     public float cafeineBuildup = 0;
 
+    public int level;
+    private int actualLevel;
+    public GameObject visibility;
+    private LayerMask Buildings;
+
     private Color color = Color.gray;
 
     public List<Character> friends;
 
+
     private void Start()
     {
+        Buildings = LayerMask.GetMask("Buildings");
+        visibility = GameObject.Find("VisibilityManagerObject");
         animator = this.gameObject.GetComponent<Animator>();
         gameObject.name = realName;
         toiletBuildup = 0;
@@ -55,6 +63,9 @@ public class Character : MonoBehaviour {
         {
             animator.SetTrigger("Coffee");
         }
+
+        actualLevel = visibility.GetComponent<VisibilityManager>().level;
+        visible();
     }
 
     public void RandomizeCharacter(string name, CharacterJob job = CharacterJob.Student)
@@ -73,6 +84,7 @@ public class Character : MonoBehaviour {
 
         int pick = Random.Range(0, System.Enum.GetNames(typeof(Mood)).Length);
         mood = (Mood) pick;
+
     }
 
     public void UpdateNeeds()
@@ -143,6 +155,12 @@ public class Character : MonoBehaviour {
         isSelected = true;
         OnVisual();
         CharacterUi.LinkCharacter();
+
+        MeshRenderer[] renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer rend in renderers)
+        {
+            rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        }
     }
 
     public void Deselect()
@@ -172,6 +190,69 @@ public class Character : MonoBehaviour {
         isHighlighted = false;
     }
 
+
+    private void visible() 
+    {
+        RaycastHit hit;
+        Vector3 fromPosition = gameObject.transform.position;
+        Vector3 direction = new Vector3(0,-1,0);
+        float distance = 50;
+
+        bool ok = Physics.Raycast(fromPosition, direction, out hit, distance, Buildings);
+
+        if (hit.collider.gameObject.layer == 11) //Buildings layer
+        {
+
+                string name = hit.transform.parent.name;
+                int childLevel = (int)char.GetNumericValue(name[name.Length - 1]); // Extract level from parent name
+                if (name[name.Length - 2] == '-')
+                    childLevel *= -1;
+                level = childLevel;
+            
+
+            MeshRenderer[] renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer rend in renderers)
+            {
+                if ((level <= actualLevel) && (!isSelected))
+                {
+                     rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                }
+                if ((level > actualLevel) && (!isSelected))
+                {
+                     rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+                }
+            }
+
+            if (isSelected && GameObject.Find("MainCamera").GetComponent<CameraMovement>().follow)
+            {
+                int variable = actualLevel - level;
+                if (variable < 0)
+                {
+                    while (variable != 0)
+                    {
+                        visibility.GetComponent<VisibilityManager>().ChangeLevel(+1);
+                        variable += 1;
+                    }
+                }
+                if (variable > 0)
+                {
+                    while (variable != 0)
+                    {
+                        visibility.GetComponent<VisibilityManager>().ChangeLevel(-1);
+                        variable += -1;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision other) 
+    {
+        if (other.collider.gameObject.layer == 11) //buildings layer 
+        {
+            //level = 0;
+        }
+    }
 }
 
 public enum Mood { Calm, Happy, Flirty, Tired, Bored, Depressed, Sad, Angry, Hungry, Thirsty, Neutral }

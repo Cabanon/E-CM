@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour {
     public float rotateSpeed = 50f;
     public float mouseSensitivity = 5f;
     public float zoomSpeed = 1f;
-    private bool follow = true;
+    public bool follow = true;
     public bool center = false;
     public GameObject followToggle;
     // The gamer can change the speed of all the different axis

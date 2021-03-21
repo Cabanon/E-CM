@@ -95,7 +95,7 @@ public class DiaryController : MonoBehaviour {
     void AddName(string name)
     {
         Text texte = Instantiate(texte_prefab, content);
-        texte.text = name;
+        texte.text = "  "+name;
     }
 
     public void SetOwner(GameObject owner)
