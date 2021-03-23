@@ -46,9 +46,14 @@ public class Sound : MonoBehaviour
     public void InitialiseSound () //initialise some sound parameters this function is called by start but must also be called when the sound is created, after the modification of the properties
     {
         collid.radius = soundIntensity;
-        if (lifeTime > 0)
+        if (lifeTime >= 0)
         {
             Destroy(this.gameObject, lifeTime);
         }
+    }
+
+    public void KillSound()
+    {
+        Destroy(this.gameObject);
     }
 }

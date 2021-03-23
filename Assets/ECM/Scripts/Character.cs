@@ -35,6 +35,7 @@ public class Character : MonoBehaviour {
     private int actualLevel;
     public GameObject visibility;
     private LayerMask Buildings;
+    GameObject eyes;
 
     private Color color = Color.gray;
 
@@ -43,6 +44,7 @@ public class Character : MonoBehaviour {
 
     private void Start()
     {
+        eyes = gameObject.GetComponentInChildren<googly>().gameObject;
         Buildings = LayerMask.GetMask("Buildings");
         visibility = GameObject.Find("VisibilityManagerObject");
         animator = this.gameObject.GetComponent<Animator>();
@@ -59,11 +61,6 @@ public class Character : MonoBehaviour {
 
     private void Update()
     {
-        if (NeedsCafein())
-        {
-            animator.SetTrigger("Coffee");
-        }
-
         actualLevel = visibility.GetComponent<VisibilityManager>().level;
         visible();
     }
@@ -216,10 +213,12 @@ public class Character : MonoBehaviour {
                 if ((level <= actualLevel) && (!isSelected))
                 {
                      rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                    eyes.SetActive(true);
                 }
                 if ((level > actualLevel) && (!isSelected))
                 {
                      rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+                    eyes.SetActive(false);
                 }
             }
 

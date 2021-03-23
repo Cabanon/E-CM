@@ -11,7 +11,7 @@ public class SoundSystem : MonoBehaviour
     private bool wasSelected = false;
     public List<GameObject> sounds = new List<GameObject>();
     public List<GameObject> earedSounds = new List<GameObject>();
-
+    public GameObject sound_prefab;
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +110,19 @@ public class SoundSystem : MonoBehaviour
                 wasSelected = false;
             }
         }
+    }
+
+    public GameObject NewSound(string name, int force, float intensity, float lifetime)
+    {
+        GameObject sound = Instantiate(sound_prefab, this.gameObject.transform.parent.transform);
+        sound.GetComponent<Sound>().soundName = name;
+        sound.GetComponent<Sound>().soundForce = force;
+        sound.GetComponent<Sound>().soundIntensity = intensity;
+        sound.GetComponent<Sound>().lifeTime = lifetime;
+        sound.GetComponent<Sound>().InitialiseSound();
+        sound.layer = 10;
+        sound.tag = "Sound";
+        return sound;
     }
 
 }
